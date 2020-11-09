@@ -2,41 +2,10 @@ DROP DATABASE IF EXISTS employee_trackerdb;
 CREATE DATABASE employee_trackerdb;
 USE employee_trackerdb;
 
-CREATE TABLE departments
+DROP TABLE employee;
+
+CREATE TABLE employee
 (
-    id INT NOT NULL
-
-        PRIMARY KEY,
-    name VARCHAR
-    (30) NOT NULL
-);
-
-
-CREATE TABLE role
-(
-    id INT NOT NULL
-    AUTO_INCREMENT PRIMARY KEY, 
-     title VARCHAR
-    (30) NOT NULL,
-     salary DECIMAL NOT NULL, 
-    department_id INT NOT NULL, 
-    INDEX dep_index
-    (department_id),
-    CONSTRAINT fk_department FOREIGN KEY
-    (department_id) REFERENCES departments
-    (id)
-        ON
-    DELETE CASCADE
-    ):
-
-
-
-
-
-
-
-    CREATE TABLE employee
-    (
         id INT NOT NULL
         AUTO_INCREMENT PRIMARY KEY, 
 first_name VARCHAR
@@ -59,3 +28,38 @@ CONSTRAINT fk_manager FOREIGN KEY,
         DELETE
         SET NULL
         );
+
+        INSERT INTO employee
+                (first_name, last_name, role_id, manager_id)
+        VALUES
+                ("Sian", "Hayden", 1, null),
+                ("Kingston", "James", 2, null),
+                ("Ali", "Jordan", 3, null),
+                ("Rohnan", "Grace", 4, null),
+                ("Jaxton", "Drain", 3, null),
+                ("Jerome", "Zachariah", 5, null);
+
+
+        CREATE TABLE role
+        (
+                id INT NOT NULL
+                AUTO_INCREMENT PRIMARY KEY, 
+     title VARCHAR
+                (30) NOT NULL,
+     salary DECIMAL NOT NULL, 
+    department_id INT NOT NULL, 
+    INDEX dep_index
+                (department_id),
+    CONSTRAINT fk_department FOREIGN KEY
+                (department_id) REFERENCES departments
+                (id)
+        ON
+                DELETE CASCADE
+    ):
+
+
+
+
+
+
+  

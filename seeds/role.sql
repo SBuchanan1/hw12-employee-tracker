@@ -5,7 +5,6 @@ VALUES
     ("Kingston", "James", 2, null),
     ("Ali", "Jordan", 3, null),
     ("Rohnan", "Grace", 4, null),
-    ("Katrina", "Sykes", 5, null),
     ("Jaxton", "Drain", 3, null),
     ("Jerome", "Zachariah", 5, null);
 
