@@ -1,19 +1,32 @@
-INSERT INTO employee
-    (first_name, last_name, role_id, manager_id)
-VALUES
-    ("Sian", "Hayden", 1, null),
-    ("Kingston", "James", 2, null),
-    ("Ali", "Jordan", 3, null),
-    ("Rohnan", "Grace", 4, null),
-    ("Jaxton", "Drain", 3, null),
-    ("Jerome", "Zachariah", 5, null);
+USE employee_trackerdb;
+
+CREATE TABLE role
+(
+    id INT NOT NULL
+    AUTO_INCREMENT PRIMARY KEY, 
+     title VARCHAR
+    (30) NOT NULL,
+     salary DECIMAL NOT NULL, 
+    department_id INT NOT NULL, 
+    INDEX dep_index
+    (department_id),
+    CONSTRAINT fk_department FOREIGN KEY
+    (department_id) REFERENCES departments
+    (id)
+        ON
+    DELETE CASCADE
+    ):
 
 
 
-INSERT INTO role
-    (title,salary,department_id)
-VALUES
-    ('Salesperson', 80000, ' '),
-    ('Sales Lead'),
-    ('Finacne')
-, 
+
+
+
+
+    INSERT INTO role
+        (title,salary,department_id)
+    VALUES
+        ('Salesperson', 80000, ' '),
+        ('Sales Lead'),
+        ('Finacne')
+    , 
