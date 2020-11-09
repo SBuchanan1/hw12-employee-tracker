@@ -24,18 +24,17 @@ function employeePrompt() {
             type: "rawlist",
             message: "What would you like to do?",
             choice: ["Add Employee", "Delete Employee"],
-        })
-        .then(function (answer)) {
-        switch (answer.action) {
-            case: "Add Employee":
-                addEmployee();
-                break;
+        }).then(function (answer) {
+            switch (answer.action) {
+                case "Add Employee":
+                    addEmployee();
+                    break;
 
-            case "Delete Employee":
-                deleteEmployee();
-                break;
-        }
-    }
+                case "Delete Employee":
+                    deleteEmployee();
+                    break;
+            }
+        });
 
 }
 

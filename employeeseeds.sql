@@ -1,60 +1,21 @@
-DROP DATABASE IF EXISTS employee_trackerdb;
-CREATE DATABASE employee_trackerdb;
-USE employee_trackerdb;
+INSERT INTO employee
+    (first_name, last_name, role_id)
+VALUES
+    (Sian, Hayden, 1),
+    (Kingston, James, 2),
+    (Ali, Jordan, 3),
+    (Rohnan, Grace, 4),
+    (Nicole, Leslie, 5),
+    (Jaxton, Drain, 6),
+    (Jerome, Zachariah, 7),
+    (Chris, Trejos, 8),
+    (Alexa, Garcia, 9),
+    (Katrina, Sykes, 10);
 
-CREATE TABLE departments
-(
-    id INT NOT NULL
-    AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR
-    (30) NOT NULL
-);
-
-
-    CREATE TABLE role
-    (
-        id INT NOT NULL
-        AUTO_INCREMENT PRIMARY KEY, 
-     title VARCHAR
-        (30) NOT NULL,
-     salary DECIMAL NOT NULL, 
-    department_id INT NOT NULL, 
-    INDEX dep_index
-        (department_id),
-    CONSTRAINT fk_department FOREIGN KEY
-        (department_id) REFERENCES departments
-        (id)
-        ON
-        DELETE CASCADE
-    ):
-
-
-
-
-
-
-
-        CREATE TABLE employee
-        (
-            id INT NOT NULL
-            AUTO_INCREMENT PRIMARY KEY, 
-first_name VARCHAR
-            (30) NOT NULL, 
-last_name VARCHAR
-            (30) NOT NULL, 
-role_id INT NOT NULL, 
-INDEX role_index
-            (role_id),
-CONSTRAINT fk_role FOREIGN KEY
-            (role_id) REFERENCES role
-            (id)ON
-            DELETE CASCADE, 
-manager_id INT , 
-INDEX man_index
-            (manager_id),
-CONSTRAINT fk_manager FOREIGN KEY,
-            (manager_id) REFERENCES employee
-            (id) ON
-            DELETE
-            SET NULL
-            );
+INSERT INTO role
+    (title,salary,department_id)
+VALUES
+    ('Salesperson', 80000, ' '),
+    ('Sales Lead'),
+    ('Finacne')
+, 
