@@ -26,7 +26,13 @@ CREATE TABLE role
     INSERT INTO role
         (title,salary,department_id)
     VALUES
-        ('Salesperson', 80000, ' '),
-        ('Sales Lead'),
-        ('Finacne')
-    , 
+        ("Software Engineer I", 107000.75, 1),
+        ("Software Engineer II", 140000.89, 1),
+        ("Marketing Manager", 110000.62, 3),
+        ("Financial Analyst", 70000.36, 4),
+        ("Human Resources", 89000.23, 2 ),
+        ("Software Engineer III", 160000.43, 1);
+
+    SELECT *
+    FROM role;
+    
