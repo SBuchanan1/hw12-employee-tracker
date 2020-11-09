@@ -4,6 +4,17 @@ const inquirer = require("inquirer"),
 
 const cTable = require("console.table"),
 
+    let roleList = [
+        "Software Engineer I",
+        "Software Engineer II",
+        "Software Engineer III",
+        "Marketing Manager",
+        "Financial Analyst",
+        "Human Resources",
+
+
+    ];
+
 const connection = mysql.createConnection({
     host: "localhost",
     port: 8080,
