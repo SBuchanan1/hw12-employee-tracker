@@ -26,7 +26,7 @@ function employeePrompt() {
     inquirer
         .prompt({
             name: "action",
-            type: "rawlist",
+            type: "list",
             message: "What would you like to do?",
             choice: ["Add Employee", "Delete Employee"],
         }).then(function (answer) {
