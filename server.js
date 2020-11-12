@@ -494,8 +494,8 @@ async function updateEmployeeRole() {
         });
 }
 
-async function updateEmpManager() {
-    let namesEmpManager = await helperEmpManager();
+async function updateEmployeeManager() {
+    let namesEmployeeManager = await helperEmployeeManager();
 
     inquirer
         .prompt([
@@ -504,14 +504,14 @@ async function updateEmpManager() {
                 type: "list",
                 name: "employee",
                 message: "Select a employee for update his manager",
-                choices: namesEmpManager,
+                choices: namesEmloyeeManager,
             },
             {
                 //show a list with the roles names
                 type: "list",
                 name: "manager",
                 message: "Select a manager name",
-                choices: namesEmpManager,
+                choices: namesEmployeeManager,
             },
         ])
         .then((answer) => {
