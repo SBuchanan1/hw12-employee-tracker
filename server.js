@@ -9,8 +9,8 @@ const connection = mysql.createConnection({
     // Your MySQL username
     user: "root",
     // Your MySQL password
-    password: "developer22",
-    database: "employee_trackerdb",
+    password: "BBbb123!@#",
+    database: "employee_trackerDB",
 });
 
 connection.connect((err) => {
@@ -48,8 +48,8 @@ function menu() {
                 ],
             },
         ])
-        .then((apples) => {
-            switch (apples.selectOptions) {
+        .then((options) => {
+            switch (options.selectOptions) {
                 case "View all the Departments":
                     showDepartments();
                     break;
@@ -168,14 +168,14 @@ async function helperEmpManager() {
 //select all from department table and back a object array (department name and id)
 async function helperArray() {
     let res = await connection.query(`SELECT * FROM departments `);
-    let admin = [];
+    let deptoChoice = [];
 
-    res.forEach((admin) => {
+    res.forEach((dpto) => {
         //save on the list a object
-        admin.push({ name: admin.name, value: admin.id });
+        deptoChoice.push({ name: dpto.name, value: dpto.id });
     });
 
-    return admin;
+    return deptoChoice;
 }
 
 //select title and  id from role table and back a object array
@@ -210,8 +210,8 @@ function addDepartment() {
                 },
             },
         ])
-        .then((answer) => {
-            let nameDepartment = answer.nameDepart;
+        .then((anserw) => {
+            let nameDepartment = anserw.nameDpto;
             //sql consult insert
             connection.query(
                 "INSERT INTO departments SET name=? ",
@@ -237,13 +237,13 @@ async function deleteApartment() {
         .prompt([
             {
                 type: "list",
-                name: "departDelete",
+                name: "dptoDelete",
                 message: "Select the department for delete!",
                 choices: roleNames,
             },
         ])
-        .then((answer) => {
-            let deleteId = answer.departDelete;
+        .then((anserw) => {
+            let deleteId = anserw.dptoDelete;
             //sql consult delete
             connection.query(
                 "DELETE FROM departments WHERE id=? ",
@@ -261,7 +261,7 @@ async function deleteApartment() {
 // add a role info to the date base
 async function addRole() {
     //the function back a array with all the departments name
-    let departChoiceRes = await helperArray();
+    let deptoChoiceRes = await helperArray();
 
     inquirer
         .prompt([
@@ -295,15 +295,15 @@ async function addRole() {
             },
             {
                 type: "list",
-                name: "departId",
+                name: "dptoId",
                 message: "Select the department for that role?",
-                choices: departChoiceRes,
+                choices: deptoChoiceRes,
             },
         ])
-        .then((answer) => {
-            let title = answer.title;
-            let salary = answer.salary;
-            let id = answer.departId;
+        .then((anserw) => {
+            let title = anserw.title;
+            let salary = anserw.salary;
+            let id = anserw.dptoId;
 
             //query insert a role
             connection.query(
@@ -330,8 +330,8 @@ async function deleteRole() {
                 choices: rolesName,
             },
         ])
-        .then((answer => {
-            let deleteId = answer.roleDelete;
+        .then((anserw) => {
+            let deleteId = anserw.roleDelete;
             //sql consult delete
             connection.query(
                 "DELETE FROM role WHERE id=? ",
@@ -403,13 +403,13 @@ async function addEmployee() {
                 when: ({ confirmManager }) => confirmManager,
             },
         ])
-        .then((answer) => {
+        .then((anserw) => {
             //taking the value entry for the prompt
-            let name = answer.name;
-            let last = answer.lastName;
-            let roleIdEmp = answer.selectRole;
+            let name = anserw.name;
+            let last = anserw.lastName;
+            let roleIdEmp = anserw.selectRole;
             //manager id can be null to
-            let managerId = answer.magId || null;
+            let managerId = anserw.magId || null;
 
             //sql consult insert  a employee
             connection.query(
@@ -436,8 +436,8 @@ async function deleteEmployee() {
                 choices: employees,
             },
         ])
-        .then((answer) => {
-            let deleteId = answer.empDelete;
+        .then((anserw) => {
+            let deleteId = anserw.empDelete;
             //sql consult delete employee
             connection.query(
                 "DELETE FROM employees WHERE id=? ",
@@ -475,9 +475,9 @@ async function updateEmployeeRole() {
                 choices: rolesName,
             },
         ])
-        .then((answer) => {
-            let empName = answer.employeeName;
-            let newrole = answer.selectRole;
+        .then((anserw) => {
+            let empName = anserw.employeeName;
+            let newrole = anserw.selectRole;
             //query consult update role for a employee
             connection.query(
                 "UPDATE employees SET employees.role_id= ? WHERE employees.id=?",
@@ -494,8 +494,8 @@ async function updateEmployeeRole() {
         });
 }
 
-async function updateEmployeeManager() {
-    let namesEmployeeManager = await helperEmployeeManager();
+async function updateEmpManager() {
+    let namesEmpManager = await helperEmpManager();
 
     inquirer
         .prompt([
@@ -504,19 +504,19 @@ async function updateEmployeeManager() {
                 type: "list",
                 name: "employee",
                 message: "Select a employee for update his manager",
-                choices: namesEmloyeeManager,
+                choices: namesEmpManager,
             },
             {
                 //show a list with the roles names
                 type: "list",
                 name: "manager",
                 message: "Select a manager name",
-                choices: namesEmployeeManager,
+                choices: namesEmpManager,
             },
         ])
-        .then((answer) => {
-            let empName = answer.employee;
-            let newManager = answer.manager;
+        .then((anserw) => {
+            let empName = anserw.employee;
+            let newManager = anserw.manager;
             //query consult update role for a employee
             connection.query(
                 "UPDATE employees SET employees.manager_id= ? WHERE employees.id=?",
@@ -536,9 +536,9 @@ async function updateEmployeeManager() {
 }
 
 //show employees by department
-async function showEmployeebyDepart() {
+async function showEmployeebyDepto() {
     //return a list department names
-    let departnames = await helperArray();
+    let deptonames = await helperArray();
 
     inquirer
         .prompt([
@@ -546,15 +546,15 @@ async function showEmployeebyDepart() {
                 type: "list",
                 name: "ShowED",
                 message: "Select the department for show employees!",
-                choices: departnames,
+                choices: deptonames,
             },
         ])
-        .then((answer) => {
-            let departID = answer.ShowED;
+        .then((anserw) => {
+            let deptoID = anserw.ShowED;
             //query for select from all tables info
             connection.query(
                 "SELECT employees.id, employees.first_name, employees.last_name,roles.title FROM employees LEFT JOIN roles ON employees.role_id=roles.id  LEFT JOIN departments departments on roles.department_id = departments.id  WHERE departments.id=? ",
-                [departsID],
+                [deptoID],
                 (err, res) => {
                     if (err) throw err;
                     if (res.length > 0) {
