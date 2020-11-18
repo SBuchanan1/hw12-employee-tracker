@@ -11,6 +11,7 @@ const connection = mysql.createConnection({
     // Your MySQL password
     password: "developer22",
     database: "employee_trackerdb",
+    insecureAuth: true
 });
 
 connection.connect((err) => {

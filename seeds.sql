@@ -33,7 +33,7 @@ VALUES
     ("Legacy", "Meadows", 4, 4),
     ("Jaxton", "Drain", 4, 4),
     ("Jerome", "Zachariah", 5, 4),
-    ("Heidi", "Meadows", 6, null),
+    ("Heidi", "Buchanan", 6, null),
     ("Nicole", "Duffus", 7, null),
     ("Katrina", "Sykes", 8, 9),
     ("Chris", "Trejos", 9, null),
